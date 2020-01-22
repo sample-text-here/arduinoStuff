@@ -48,20 +48,27 @@ void loop() {
   for (int i = 0; i < NUMPIXELS; i++) {
     //every other color is different
     if (!flip) {
+      //sets pixel color
       pixels.setPixelColor(i, pixels.Color(c1.red, c1.green, c1.blue));
     } else {
       pixels.setPixelColor(i, pixels.Color(c2.red, c2.green, c2.blue));
     }
+    
+    //flip 1 to 0 and 0 to 1
     flip = 1 - flip;
   }
+  
+  //update pixels
   pixels.show();
   delay(500);
   
-  //man loop
+  //main loop
   for (int i = 0; i < 180; i++) {
     //idk what animation to do so I just made it fade
     c1.fadeTo(c3);
     c2.fadeTo(c3);
+    
+    //reset flip so is doesnt strobe
     flip = 0;
     for (int i = 0; i < NUMPIXELS; i++) {
       if (!flip) {
